@@ -7,7 +7,9 @@ class ProjectList extends Component {
 
     render() {
         return (
-            <h1>Wow</h1>
+            <div>
+                <button onClick={this.props.onProjectClick}>Boom</button>
+            </div>
         )
     }
 

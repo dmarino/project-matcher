@@ -3,8 +3,8 @@ import Project from '../components/Project';
 import Api from '../api';
 
 class ProjectContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {project: {}};
     }
 
@@ -13,7 +13,8 @@ class ProjectContainer extends Component {
     }
 
     render() {
-        return React.createElement(Project, {projects: this.state.projects});
+        return React.createElement(Project,
+                                   {projects: this.state.projects, onBackButtonClick: this.props.onBackButtonClick});
     }
 }
 

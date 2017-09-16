@@ -3,8 +3,8 @@ import ProjectList from '../components/ProjectList';
 import Api from '../api';
 
 class ProjectListContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {projects: []};
     }
 
@@ -13,7 +13,8 @@ class ProjectListContainer extends Component {
     }
 
     render() {
-        return React.createElement(ProjectList, {projects: this.state.projects});
+        return React.createElement(ProjectList,
+                                   {projects: this.state.projects, onProjectClick: this.props.onProjectClick});
     }
 }
 
