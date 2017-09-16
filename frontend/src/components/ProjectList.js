@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ProjectList.css';
+import Toolbar from "./Toolbar";
 
 const TAG_TYPES = ['tag badge badge-danger', 'tag badge badge-info', 'tag badge badge-success'];
 
@@ -22,7 +23,7 @@ class ProjectList extends Component {
                     <img className="card-img-top" src={project.image_url} alt="Card cap"/>
                     <div className="card-body">
                         <h4 className="card-title">{project.name}</h4>
-                        <p className="card-text">{project.text_description}</p>
+                        <p className="card-text text-secondary">{project.text_description}</p>
                         <hr/>
                         <div className="text-center">
                             {this.generateProjectTags(project.tags)}
@@ -36,6 +37,7 @@ class ProjectList extends Component {
     render() {
         return (
             <div>
+                <Toolbar/>
                 {this.generateProjectList()}
             </div>
         )
