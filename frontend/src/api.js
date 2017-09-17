@@ -7,7 +7,7 @@ const MOCK_RESPONSES = [
         about_us: "Indie devs, no HQ.",
         video_url: "",
         image_url: "http://via.placeholder.com/350x150",
-        contact: "indiedev@gmail.com",
+        contact_email: "indiedev@gmail.com",
         tags: ["software", "videogames", "adventure"]
     },
     {
@@ -18,7 +18,7 @@ const MOCK_RESPONSES = [
         about_us: "Montreal based construction team. 3rd year students.",
         video_url: "vidurl",
         image_url: "http://via.placeholder.com/350x150",
-        contact: "normal@yahoo.com",
+        contact_email: "normal@yahoo.com",
         tags: ["construction", "structures"]
     },
     {
@@ -29,7 +29,7 @@ const MOCK_RESPONSES = [
         about_us: "We are a fun, worldwide team!",
         video_url: "vidurl",
         image_url: "http://via.placeholder.com/350x150",
-        contact: "verylongemailusername@gmail.com",
+        contact_email: "verylongemailusername@gmail.com",
         tags: ["software", "marketplace"]
     }
 ];
