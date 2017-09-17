@@ -73,7 +73,7 @@ class Project extends Component
         {
             if (this.props.project.video_url !='') 
             {
-                return <video  src={this.props.project.video_url} controls="controls"  autoplay="true" muted="muted" />
+                return <video controls src={this.props.project.video_url} autoplay="true" muted="muted" height="250"  width="450" />
             }
             else
                 return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
