@@ -43,6 +43,10 @@ class Api {
     static getProject(id) {
         return Promise.resolve(MOCK_RESPONSES[2]);
     }
+
+    static saveProject() {
+        return Promise.resolve(true);
+    }
 }
 
 export default Api;

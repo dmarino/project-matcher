@@ -14,26 +14,19 @@ class Toolbar extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="main-navbar">
-                        <div className="navbar-nav mr-auto"></div>
-                        <div className="form-inline">
-                            <input className="mx-auto my-2" type="text" placeholder="Tag name filter"
-                                   onKeyPress={(e) => this.processSearchInput(e)}/>
-                        </div>
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <span className="nav-link" onClick={this.props.navigateToProjectList}>Explore</span>
+                            </li>
+                            <li className="nav-item">
+                                <span className="nav-link" onClick={this.props.navigateToProjectUpload}>Upload</span>
+                            </li>
+                        </ul>
                     </div>
                     <div className="col-md-3"></div>
                 </nav>
             </div>
         )
-    }
-
-    processSearchInput(e) {
-        const keyCode = e.keyCode || e.which;
-        if (keyCode !== 13) {
-            return;
-        }
-        const tagName = e.currentTarget.value;
-        this.props.onSearchKeyPress(tagName);
-        e.currentTarget.value = '';
     }
 }
 
