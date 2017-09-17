@@ -13,7 +13,7 @@ class ProjectUpload extends Component {
                                 <input className="form-control col" type="text"
                                        placeholder="Project name"/>
                                 <span className="input-group-addon">
-                                    <i className="fa fa-question form-control-feedback"/>
+                                    <i className="fa fa-id-card form-control-feedback"/>
                                 </span>
                             </div>
                         </div>
@@ -22,7 +22,7 @@ class ProjectUpload extends Component {
                                 <input className="form-control col" type="text"
                                        placeholder="Short summary of your project"/>
                                 <span className="input-group-addon">
-                                    <i className="fa fa-question form-control-feedback"/>
+                                    <i className="fa fa-comment form-control-feedback"/>
                                 </span>
                             </div>
                         </div>
@@ -31,7 +31,7 @@ class ProjectUpload extends Component {
                                 <input className="form-control col" type="email"
                                        placeholder="Contact email"/>
                                 <span className="input-group-addon">
-                                    <i className="fa fa-question form-control-feedback"/>
+                                    <i className="fa fa-envelope form-control-feedback"/>
                                 </span>
                             </div>
                         </div>
@@ -40,7 +40,7 @@ class ProjectUpload extends Component {
                                 <input className="form-control col" type="text"
                                        placeholder="Add topic tags"/>
                                 <span className="input-group-addon">
-                                    <i className="fa fa-question form-control-feedback"/>
+                                    <i className="fa fa-tags form-control-feedback"/>
                                 </span>
                             </div>
                         </div>
