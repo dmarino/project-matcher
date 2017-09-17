@@ -26,11 +26,10 @@ const server = http.createServer(app);
 /**
  * Connect to db and listen on provided port, on all network interfaces.
  */
-mongoUtils.connectToServer(() => {
-    server.listen(port);
-    server.on('error', onError);
-    server.on('listening', onListening);
-});
+mongoUtils.connectToServer();
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 
 /**

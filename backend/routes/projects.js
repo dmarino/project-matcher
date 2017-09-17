@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../utils/mongoutils').getDatabase();
+const ProjectModel = require('../models/project_model');
 
 /* GET projects listing. */
 router.get('/', function(req, res, next) {
