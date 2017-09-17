@@ -1,20 +1,9 @@
 import React, {Component} from 'react';
 import Project from '../components/Project';
-import Api from '../api';
 
 class ProjectContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {project: {}};
-    }
-
-    componentDidMount() {
-        Api.getProject('fakeid').then(fetchedProject => this.setState({project: fetchedProject}));
-    }
-
     render() {
-        return React.createElement(Project,
-                                   {projects: this.state.projects, onBackButtonClick: this.props.onBackButtonClick});
+        return React.createElement(Project, {project: this.props.currentProject});
     }
 }
 

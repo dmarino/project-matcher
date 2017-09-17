@@ -8,16 +8,16 @@ class ProjectList extends Component {
         return (
             <div>
                 <div className="container">
-                    {this.generateFilterCard()}
+                    {this.generateFilterSection()}
                     {this.generateProjectList()}
                 </div>
             </div>
         )
     }
 
-    generateFilterCard() {
+    generateFilterSection() {
         return (
-            <div className="row justify-content-center">
+            <div className="row justify-content-center filter-section">
                 <div className="col-12 col-md-8 col-lg-6 text-center no-padding">
                     <div className="input-group">
                         <input className="form-control col" type="text" placeholder="Filter projects by tag name."
@@ -77,7 +77,10 @@ class ProjectList extends Component {
                         <div className="card-body">
                             <p className="card-text text-secondary">{project.text_description}</p>
                             <div className="row justify-content-end">
-                                <button className="btn btn-primary">Find out more</button>
+                                <button className="btn btn-primary"
+                                        onClick={() => this.props.navigateToProject(project)}>
+                                    Find out more
+                                </button>
                             </div>
                         </div>
                         <div className="card-footer">

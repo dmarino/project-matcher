@@ -25,7 +25,7 @@ class ProjectListContainer extends Component {
                                    {
                                        projects: this.state.projects,
                                        filterTags: this.state.filterTags,
-                                       onProjectClick: this.props.onProjectClick,
+                                       navigateToProject: this.props.navigateToProject,
                                        removeFilterTag: (e) => this.removeFilterTag(e),
                                        addFilterTag: (e) => this.addFilterTag(e)
                                    });

@@ -15,14 +15,14 @@ class App extends Component {
                 return (
                     <div>
                         {toolbar}
-                        <ProjectListContainer onProjectClick={() => this.props.navigateToProject()}/>
+                        <ProjectListContainer navigateToProject={(project) => this.props.navigateToProject(project)}/>
                     </div>
                 );
             case 'Project':
                 return (
                     <div>
                         {toolbar}
-                        <ProjectContainer/>
+                        <ProjectContainer currentProject={this.props.currentProject}/>
                     </div>
                 );
             case 'ProjectUpload':

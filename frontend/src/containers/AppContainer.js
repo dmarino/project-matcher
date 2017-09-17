@@ -4,26 +4,28 @@ import App from '../components/App';
 class AppContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {currentComponent: 'ProjectList'}
+        this.state = {currentComponent: 'ProjectList', currentProject: {}};
     }
 
     loadProjectListComponent() {
-        this.setState({currentComponent: 'ProjectList'});
+        this.setState({currentComponent: 'ProjectList', currentProject: {}});
     }
 
-    loadProjectComponent() {
-        this.setState({currentComponent: 'Project'});
+    loadProjectComponent(project) {
+        console.log(project);
+        this.setState({currentComponent: 'Project', currentProject: project});
     }
 
     loadProjectUploadComponent() {
-        this.setState({currentComponent: 'ProjectUpload'});
+        this.setState({currentComponent: 'ProjectUpload', currentProject: {}});
     }
 
     render() {
         return React.createElement(App, {
             currentComponent: this.state.currentComponent,
+            currentProject: this.state.currentProject,
             navigateToProjectList: () => this.loadProjectListComponent(),
-            navigateToProject: () => this.loadProjectComponent(),
+            navigateToProject: (project) => this.loadProjectComponent(project),
             navigateToProjectUpload: () => this.loadProjectUploadComponent()
         });
     }
