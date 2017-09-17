@@ -52,7 +52,10 @@ class ProjectList extends Component {
 
         for (let i = 0; i < TAG_TYPES.length && i < tags.length; i++) {
             tagsElementArray.push(
-                <span className={TAG_TYPES[i]} onClick={(e) => this.removeFilterTag(e)} key={i}>{tags[i]}</span>
+                <span className={TAG_TYPES[i]} onClick={() => this.props.removeFilterTag(tags[i])} key={i}>
+                    <span className="fa fa-close icon-margin"></span>
+                    {tags[i]}
+                </span>
             )
         }
         return (
@@ -60,11 +63,6 @@ class ProjectList extends Component {
                 Filtering results by: {tagsElementArray}
             </span>
         );
-    }
-
-    removeFilterTag(e) {
-        const tagName = e.currentTarget.innerHTML;
-        this.props.removeFilterTag(tagName);
     }
 
     generateProjectList() {
