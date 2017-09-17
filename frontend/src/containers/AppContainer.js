@@ -12,7 +12,6 @@ class AppContainer extends Component {
     }
 
     loadProjectComponent(project) {
-        console.log(project);
         this.setState({currentComponent: 'Project', currentProject: project});
     }
 
