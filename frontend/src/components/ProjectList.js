@@ -20,7 +20,7 @@ class ProjectList extends Component {
             <div className="row justify-content-center">
                 <div className="col-12 col-md-8 col-lg-6 text-center no-padding">
                     <div className="input-group">
-                        <input className="form-control col" type="text" placeholder="Filter projects by tag name"
+                        <input className="form-control col" type="text" placeholder="Filter projects by tag name."
                                onKeyPress={(e) => this.processSearchInput(e)}/>
                         <span className="input-group-addon">
                             <i className="fa fa-search form-control-feedback"></i>
@@ -72,11 +72,15 @@ class ProjectList extends Component {
             return (
                 <div className="row justify-content-center" key={project.id}>
                     <div className="card project-holder col-12 col-md-8 col-lg-6">
+                        <div className="card-header">{project.name}</div>
                         <img className="card-img-top" src={project.image_url} alt="Card cap"/>
                         <div className="card-body">
-                            <h4 className="card-title">{project.name}</h4>
                             <p className="card-text text-secondary">{project.text_description}</p>
-                            <hr/>
+                            <div className="row justify-content-end">
+                                <button className="btn btn-primary">Find out more</button>
+                            </div>
+                        </div>
+                        <div className="card-footer">
                             <div className="text-center">
                                 {this.generateProjectTags(project.tags)}
                             </div>

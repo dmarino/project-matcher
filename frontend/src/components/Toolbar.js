@@ -25,14 +25,13 @@ class Toolbar extends Component {
     }
 
     generateNavAction(actionName) {
+        const icon = this.getNavActionIconName(actionName);
         const basicTag = (
             <div>
-                <span className="fa fa-wpexplorer" aria-hidden="true"></span>
+                <span className={icon} aria-hidden="true"></span>
                 <span className="toolbar-action-name">{actionName}</span>
             </div>
         );
-        console.log(this.props.currentComponent);
-        console.log(actionNameToComponent[actionName]);
         if (this.props.currentComponent !== actionNameToComponent[actionName]) {
             return basicTag;
         }
@@ -45,6 +44,17 @@ class Toolbar extends Component {
                 </span>
             </div>
         )
+    }
+
+    getNavActionIconName(actionName) {
+        switch (actionName) {
+            case 'Explore':
+                return 'fa fa-wpexplorer';
+            case 'Create':
+                return 'fa fa-plus-square-o';
+            default:
+                return '';
+        }
     }
 }
 
