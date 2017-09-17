@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import './Project.css';
 
+
 class Project extends Component
  {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -32,7 +29,7 @@ class Project extends Component
                     <div className="card-subheader text-center"> <strong>Contact Form</strong></div>
                     <br/>
                     <div className="card-subbody">
-                        <form onSubmit={this.handleSubmit}>
+                        <form action='/contact' name='contactus' id='contactus' method='post' onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <div className="input-group">
                                 <input className="form-control col"
@@ -71,9 +68,9 @@ class Project extends Component
 
         VerifyMedia()
         {
-            if (this.props.project.video_url !='') 
+            if (this.props.project.video_url !=='') 
             {
-                return <video controls src={this.props.project.video_url} autoplay="true" muted="muted" height="250"  width="450" />
+                return <video controls src={this.props.project.video_url} autoPlay="true" muted="muted" height="250"  width="450" />
             }
             else
                 return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
