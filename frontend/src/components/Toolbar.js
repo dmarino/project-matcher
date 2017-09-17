@@ -6,6 +6,7 @@ class Toolbar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="col-md-3"></div>
                     <a className="navbar-brand">Project Matcher</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"
@@ -19,6 +20,7 @@ class Toolbar extends Component {
                             <button className="btn btn-outline-success mr-auto" type="submit">Add</button>
                         </form>
                     </div>
+                    <div className="col-md-3"></div>
                 </nav>
             </div>
         )
