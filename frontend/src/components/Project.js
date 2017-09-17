@@ -27,22 +27,40 @@ class Project extends Component
                         <p className="card-text text-secondary">{this.props.project.long_description}</p>
                     </div>
                     <div className="card-footer">
-                    <div className="card-header text-center">Contact Form</div>
-                    
+                    <div className="card-subheader text-center">Contact Form</div>
+                    <br/>
+                    <div className="card-subbody">
                         <form onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <input className="form-control col-md-3" placeholder="Your Name" name="name"  type="text" />
+                        <div className="form-group">
+                            <div className="input-group">
+                                <input className="form-control col"
+                                       type="text"
+                                       placeholder="Your Name"
+                                />
+                                <span className="input-group-addon">
+                                    <i className="fa fa-id-card form-control-feedback"/>
+                                </span>
                             </div>
-                            <div className="form-group">
-                                <input className="form-control col-md-3" placeholder="Your Email" name="name"  type="text" />
+                        </div>
+                        <div className="form-group">
+                            <div className="input-group">
+                                <input className="form-control col"
+                                       type="text"
+                                       placeholder="Your Email"
+                                />
+                                <span className="input-group-addon">
+                                    <i className="fa fa-envelope form-control-feedback"/>
+                                </span>
                             </div>
+                        </div>
                             <div className="form-group">
                                 <textarea className="form-control" placeholder="Your Message" name="comment" rows="3" type="text" ></textarea>
                             </div>
                             <div className="form-group text-center">
                                 <input className="btn btn-primary btn-lg" type="submit" value="Send Message"/>
                             </div>
-                        </form>      
+                        </form>   
+                        </div>   
                     </div>
                 </div>
             </div>
