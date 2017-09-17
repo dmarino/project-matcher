@@ -15,15 +15,25 @@ class Toolbar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="main-navbar">
                         <div className="navbar-nav mr-auto"></div>
-                        <form className="form-inline my-2">
-                            <input className="ml-auto" type="text" placeholder="Tag name filter"/>
-                            <button className="btn btn-outline-success mr-auto" type="submit">Add</button>
-                        </form>
+                        <div className="form-inline">
+                            <input className="mx-auto my-2" type="text" placeholder="Tag name filter"
+                                   onKeyPress={(e) => this.processSearchInput(e)}/>
+                        </div>
                     </div>
                     <div className="col-md-3"></div>
                 </nav>
             </div>
         )
+    }
+
+    processSearchInput(e) {
+        const keyCode = e.keyCode || e.which;
+        if (keyCode !== 13) {
+            return;
+        }
+        const tagName = e.currentTarget.value;
+        this.props.onSearchKeyPress(tagName);
+        e.currentTarget.value = '';
     }
 }
 

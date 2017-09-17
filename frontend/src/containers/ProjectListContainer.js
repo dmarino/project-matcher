@@ -5,7 +5,7 @@ import Api from '../api';
 class ProjectListContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {projects: []};
+        this.state = {projects: [], filterTags: []};
     }
 
     componentDidMount() {
@@ -14,7 +14,23 @@ class ProjectListContainer extends Component {
 
     render() {
         return React.createElement(ProjectList,
-                                   {projects: this.state.projects, onProjectClick: this.props.onProjectClick});
+                                   {
+                                       projects: this.state.projects,
+                                       filterTags: this.state.filterTags,
+                                       onProjectClick: this.props.onProjectClick,
+                                       removeFilterTag: (e) => this.removeFilterTag(e),
+                                       addFilterTag: (e) => this.addFilterTag(e)
+                                   });
+    }
+
+    addFilterTag(tagName) {
+        const updatedArray = [...this.state.filterTags, tagName];
+        this.setState({filterTags: updatedArray});
+    }
+
+    removeFilterTag(tagName) {
+        const updatedArray = this.state.filterTags.filter(tag => tag !== tagName);
+        this.setState({filterTags: updatedArray});
     }
 }
 
