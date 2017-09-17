@@ -8,7 +8,8 @@ import '../components/App.css';
 class App extends Component {
     render() {
         const toolbar = (<Toolbar navigateToProjectList={this.props.navigateToProjectList}
-                                 navigateToProjectUpload={this.props.navigateToProjectUpload}/>);
+                                  navigateToProjectUpload={this.props.navigateToProjectUpload}
+                                  currentComponent={this.props.currentComponent}/>);
         switch (this.props.currentComponent) {
             case 'ProjectList':
                 return (
