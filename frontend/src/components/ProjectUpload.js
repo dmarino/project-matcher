@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './ProjectUpload.css';
+import Tags from "./Tags";
+import InputUtils from "../utils/InputUtils";
 
 class ProjectUpload extends Component {
     render() {
@@ -14,7 +16,8 @@ class ProjectUpload extends Component {
                                        type="text"
                                        placeholder="Project name"
                                        value={this.props.name}
-                                       onChange={(e) => this.getTextValueAndExecute(e, this.props.onNameKeyPress)}/>
+                                       onChange={(e) => InputUtils.getTextValueAndExecute(e,
+                                                                                          this.props.onNameKeyPress)}/>
                                 <span className="input-group-addon">
                                     <i className="fa fa-id-card form-control-feedback"/>
                                 </span>
@@ -27,7 +30,8 @@ class ProjectUpload extends Component {
                                        placeholder="Short summary of your project"
                                        value={this.props.short_description}
                                        onChange={
-                                           (e) => this.getTextValueAndExecute(e, this.props.onShortDescriptionKeyPress)
+                                           (e) => InputUtils.getTextValueAndExecute(e,
+                                                                                    this.props.onShortDescriptionKeyPress)
                                        }/>
                                 <span className="input-group-addon">
                                     <i className="fa fa-comment form-control-feedback"/>
@@ -41,7 +45,7 @@ class ProjectUpload extends Component {
                                        placeholder="Contact email"
                                        value={this.props.contact_email}
                                        onChange={
-                                           (e) => this.getTextValueAndExecute(e, this.props.onUpdateContactEmail)
+                                           (e) => InputUtils.getTextValueAndExecute(e, this.props.onUpdateContactEmail)
                                        }/>
                                 <span className="input-group-addon">
                                     <i className="fa fa-envelope form-control-feedback"/>
@@ -50,11 +54,18 @@ class ProjectUpload extends Component {
                         </div>
                         <div className="form-group">
                             <div className="input-group">
-                                <input className="form-control col" type="text"
-                                       placeholder="Add topic tags"/>
+                                <input className="form-control col"
+                                       type="text"
+                                       placeholder="Add topic tags"
+                                       onKeyPress={
+                                           (e) => InputUtils.onEnterPress(e, (val) => this.props.onTagAdded(val))
+                                       }/>
                                 <span className="input-group-addon">
                                     <i className="fa fa-tags form-control-feedback"/>
                                 </span>
+                            </div>
+                            <div className="text-center">
+                                <Tags tags={this.props.tags} removeTag={this.props.onTagRemoved} type="removable" message=""/>
                             </div>
                         </div>
                         <div className="form-group">
@@ -64,17 +75,18 @@ class ProjectUpload extends Component {
                                       value={this.props.long_description}
                                       rows="3"
                                       onChange={
-                                          (e) => this.getTextValueAndExecute(e, this.props.onLongDescriptionKeyPress)
+                                          (e) => InputUtils.getTextValueAndExecute(e,
+                                                                                   this.props.onLongDescriptionKeyPress)
                                       }/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="aboutUsTextArea">Tell us a little bit about the team</label>
+                            <label htmlFor="aboutUsTextArea">Tell us about the team</label>
                             <textarea className="form-control"
                                       id="aboustUsTextArea"
                                       value={this.props.about_us}
                                       rows="3"
                                       onChange={
-                                          (e) => this.getTextValueAndExecute(e, this.props.onAboutUsKeyPress)
+                                          (e) => InputUtils.getTextValueAndExecute(e, this.props.onAboutUsKeyPress)
                                       }/>
                         </div>
                         <div className="form-group">
@@ -82,25 +94,20 @@ class ProjectUpload extends Component {
                             <input type="file" className="form-control-file" id="projectImageFileInput"
                                    aria-describedby="fileHelp" accept="image/png, image/jpeg"
                                    value={this.props.image_url}
-                                   onChange={(e) => this.getTextValueAndExecute(e, this.props.onUpdateImageUrl)}/>
+                                   onChange={(e) => InputUtils.getTextValueAndExecute(e, this.props.onUpdateImageUrl)}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="projectDemoFileInput">Demo video</label>
                             <input type="file" className="form-control-file" id="projectDemoFileInput"
                                    aria-describedby="fileHelp" accept="video/mp4"
                                    value={this.props.video_url}
-                                   onChange={(e) => this.getTextValueAndExecute(e, this.props.onUpdateVideoUrl)}/>
+                                   onChange={(e) => InputUtils.getTextValueAndExecute(e, this.props.onUpdateVideoUrl)}/>
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
         )
-    }
-
-    getTextValueAndExecute(e, callback) {
-        const textValue = e.currentTarget.value;
-        callback(textValue);
     }
 }
 

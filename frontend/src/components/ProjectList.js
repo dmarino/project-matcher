@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ProjectList.css';
-
-const TAG_TYPES = ['tag badge badge-danger', 'tag badge badge-info', 'tag badge badge-success'];
+import Tags from "./Tags";
+import InputUtils from "../utils/InputUtils";
 
 class ProjectList extends Component {
     render() {
@@ -21,48 +21,17 @@ class ProjectList extends Component {
                 <div className="col-12 col-md-8 col-lg-6 text-center no-padding">
                     <div className="input-group">
                         <input className="form-control col" type="text" placeholder="Filter projects by tag name."
-                               onKeyPress={(e) => this.processSearchInput(e)}/>
+                               onKeyPress={(e) => InputUtils.onEnterPress(e, (val) => this.props.addFilterTag(val))}/>
                         <span className="input-group-addon">
                             <i className="fa fa-search form-control-feedback"/>
                         </span>
                     </div>
-                    {this.generateFilterTags()}
+                    <span>
+                        <Tags tags={this.props.filterTags} removeTag={this.props.removeFilterTag} type="removable" message="Filtering results by:"/>
+                    </span>
                 </div>
             </div>
         )
-    }
-
-    processSearchInput(e) {
-        const keyCode = e.keyCode || e.which;
-        if (keyCode !== 13) {
-            return;
-        }
-        const tagName = e.currentTarget.value;
-        this.props.addFilterTag(tagName);
-        e.currentTarget.value = '';
-    }
-
-    generateFilterTags() {
-        const tagsElementArray = [];
-        const tags = this.props.filterTags;
-
-        if (this.props.filterTags.length === 0) {
-            return;
-        }
-
-        for (let i = 0; i < TAG_TYPES.length && i < tags.length; i++) {
-            tagsElementArray.push(
-                <span className={TAG_TYPES[i]} onClick={() => this.props.removeFilterTag(tags[i])} key={i}>
-                    <span className="fa fa-close icon-margin"/>
-                    {tags[i]}
-                </span>
-            )
-        }
-        return (
-            <span className="text-secondary">
-                Filtering results by: {tagsElementArray}
-            </span>
-        );
     }
 
     generateProjectList() {
@@ -83,23 +52,13 @@ class ProjectList extends Component {
                         </div>
                         <div className="card-footer">
                             <div className="text-center">
-                                {this.generateProjectTags(project.tags)}
+                                <Tags tags={project.tags} type="regular" message=""/>
                             </div>
                         </div>
                     </div>
                 </div>
             );
         });
-    }
-
-    generateProjectTags(tags) {
-        const tagsElementArray = [];
-        for (let i = 0; i < TAG_TYPES.length && i < tags.length; i++) {
-            tagsElementArray.push(
-                <span className={TAG_TYPES[i]} key={i}>{tags[i]}</span>
-            )
-        }
-        return tagsElementArray;
     }
 }
 

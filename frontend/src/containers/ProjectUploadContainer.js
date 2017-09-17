@@ -46,13 +46,13 @@ class ProjectUploadContainer extends Component {
     }
 
     addTag(tag) {
-        const updatedTags = [this.state.tags, tag];
+        const updatedTags = [...this.state.tags, tag];
         this.setState({tags: updatedTags});
     }
 
     removeTag(tag) {
-        const updatedTags = this.state.filterTags.filter(existingTag => existingTag !== tag);
-        this.setState({filterTags: updatedTags});
+        const updatedTags = this.state.tags.filter(existingTag => existingTag !== tag);
+        this.setState({tags: updatedTags});
     }
 
     saveProject(project) {
