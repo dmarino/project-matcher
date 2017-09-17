@@ -27,7 +27,7 @@ const MOCK_RESPONSES = [
         short_description: "proyect description. this may be really long",
         long_description: "This is the long Explanation of the project Pls fill me This is the long Explanation of the project Pls fill me This is the long Explanation of the project Pls fill me This is the long Explanation of the project Pls fill me This is the long Explanation of the project Pls fill me",
         about_us: "We are a fun, worldwide team!",
-        video_url: "http://via.placeholder.com/450x150",
+        video_url: "",
         image_url: "http://via.placeholder.com/350x150",
         contact_email: "verylongemailusername@gmail.com",
         tags: ["software", "marketplace"]

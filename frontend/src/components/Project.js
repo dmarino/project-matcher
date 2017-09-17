@@ -16,18 +16,21 @@ class Project extends Component
         </div>
         )
     }
-
+    
     createProjectView() {
             return (
                 <div className="row justify-content-center" key={this.props.project.id}>
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
-                    <div className="card-header text-center">{this.props.project.name}</div>
-                    <img className="card-img-top" src={this.props.project.video_url} alt="Card cap"/>
+                    <div className="card-header text-center"> <strong>{this.props.project.name}</strong></div>
+                   
+                    <img className="card-img-top" src={this.VerifyMedia()} alt="Card cap"/>
                     <div className="card-body">
                         <p className="card-text text-secondary">{this.props.project.long_description}</p>
+                        <div className="card-subheader text-center"> <strong>About Us</strong></div>
+                        <label>{this.props.project.about_us}</label>
                     </div>
                     <div className="card-footer">
-                    <div className="card-subheader text-center">Contact Form</div>
+                    <div className="card-subheader text-center"> <strong>Contact Form</strong></div>
                     <br/>
                     <div className="card-subbody">
                         <form onSubmit={this.handleSubmit}>
@@ -66,7 +69,17 @@ class Project extends Component
             </div>
             );
         };
-    }
 
+        VerifyMedia()
+        {
+            if (this.props.project.video_url !='') 
+            {
+                return this.props.project.video_url;
+            }
+            else
+                return this.props.project.image_url;
+        }
+
+    }
 
 export default Project;
