@@ -14,6 +14,7 @@ router.get('/:id', function(req, res, next) {
 
 /* POST project */
 router.post('/', function(req, res, next) {
+    console.log(req.body);
     res.send('added new entry to db');
 });
 

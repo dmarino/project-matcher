@@ -72,12 +72,12 @@ class Project extends Component
 
         VerifyMedia()
         {
-            if (this.props.project.video_url !='') 
+            if (this.props.project.video != '')
             {
-                return this.props.project.video_url;
+                return this.props.project.video;
             }
             else
-                return this.props.project.image_url;
+                return this.props.project.image;
         }
 
     }

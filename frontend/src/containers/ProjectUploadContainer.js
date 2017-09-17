@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ProjectUpload from '../components/ProjectUpload';
 import Api from '../api';
 
+
 class ProjectUploadContainer extends Component {
     constructor(props) {
         super(props);
@@ -10,8 +11,8 @@ class ProjectUploadContainer extends Component {
             short_description: "",
             long_description: "",
             about_us: "",
-            video_url: "",
-            image_url: "",
+            video: "",
+            image: "",
             contact_email: "",
             tags: []
         };
@@ -33,12 +34,14 @@ class ProjectUploadContainer extends Component {
         this.setState({about_us: aboutUs});
     }
 
-    updateVideoUrl(videoUrl) {
-        this.setState({video_url: videoUrl});
+    updateVideoUrl(videos) {
+        console.log(videos);
+        this.setState({video: ''});
     }
 
-    updateImageUrl(imageUrl) {
-        this.setState({image_url: imageUrl});
+    updateImageUrl(images) {
+        const image = images[0];
+        this.setState({image: image});
     }
 
     updateContactEmail(contactEmail) {
@@ -56,18 +59,30 @@ class ProjectUploadContainer extends Component {
     }
 
     saveProject(project) {
+        const data = new FormData();
+        data.append('image', this.state.image);
+        data.append('name', this.state.name);
+        data.append('short_description', this.state.short_description);
+        data.append('long_description', this.state.long_description);
+        data.append('about_us', this.state.about_us);
+        data.append('tags', this.state.tags);
+        data.append('contact_email', this.state.contact_email);
+        fetch('http://localhost:8000/projects', {
+            method: 'POST',
+            body: data
+        }).then(res => console.log(res));
         Api.saveProject(project);
     }
 
     render() {
         return React.createElement(ProjectUpload, {
-            saveProject: this.saveProject,
+            saveProject: () => this.saveProject(),
             name: this.state.name,
             short_description: this.state.short_description,
             long_description: this.state.long_description,
             about_us: this.state.about_us,
-            video_url: this.state.video_url,
-            image_url: this.state.image_url,
+            video: this.state.video,
+            image: this.state.image,
             contact_email: this.state.contact_email,
             tags: this.state.tags,
             onNameKeyPress: (name) => this.updateName(name),

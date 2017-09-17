@@ -10,7 +10,7 @@ class ProjectUpload extends Component {
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
                     <div className="card-header">Start letting people know about your project!</div>
                     <div className="card-body">
-                        <form>
+                        <form encType="multipart/form-data">
                             <div className="form-group">
                                 <div className="input-group">
                                     <input className="form-control col"
@@ -104,20 +104,20 @@ class ProjectUpload extends Component {
                                 <label htmlFor="projectImageFileInput">Project image</label>
                                 <input type="file" className="form-control-file" id="projectImageFileInput"
                                        aria-describedby="fileHelp" accept="image/png, image/jpeg"
-                                       value={this.props.image_url}
-                                       onChange={(e) => InputUtils.getTextValueAndExecute(e,
-                                                                                          this.props.onUpdateImageUrl)}
+                                       onChange={(e) => InputUtils.getFilesAndExecute(e,
+                                                                                      this.props.onUpdateImageUrl)}
                                        required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="projectDemoFileInput">Demo video</label>
                                 <input type="file" className="form-control-file" id="projectDemoFileInput"
                                        aria-describedby="fileHelp" accept="video/mp4"
-                                       value={this.props.video_url}
-                                       onChange={(e) => InputUtils.getTextValueAndExecute(e,
-                                                                                          this.props.onUpdateVideoUrl)}/>
+                                       onChange={(e) => InputUtils.getFilesAndExecute(e,
+                                                                                      this.props.onUpdateVideoUrl)}/>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div className="row justify-content-end">
+                                <button className="btn btn-primary" onClick={this.props.saveProject}>Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
