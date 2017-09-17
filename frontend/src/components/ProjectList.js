@@ -18,12 +18,15 @@ class ProjectList extends Component {
     generateFilterCard() {
         return (
             <div className="row justify-content-center">
-                <div className="col-12 col-md-8 col-lg-6 text-center">
-                    <div>
-                        <input className="col" type="text" placeholder="Tag name filter"
+                <div className="col-12 col-md-8 col-lg-6 text-center no-padding">
+                    <div className="input-group">
+                        <input className="form-control col" type="text" placeholder="Filter projects by tag name"
                                onKeyPress={(e) => this.processSearchInput(e)}/>
-                        {this.generateFilterTags()}
+                        <span className="input-group-addon">
+                            <i className="fa fa-search form-control-feedback"></i>
+                        </span>
                     </div>
+                    {this.generateFilterTags()}
                 </div>
             </div>
         )
