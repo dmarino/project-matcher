@@ -23,7 +23,7 @@ class ProjectList extends Component {
                         <input className="form-control col" type="text" placeholder="Filter projects by tag name."
                                onKeyPress={(e) => this.processSearchInput(e)}/>
                         <span className="input-group-addon">
-                            <i className="fa fa-search form-control-feedback"></i>
+                            <i className="fa fa-search form-control-feedback"/>
                         </span>
                     </div>
                     {this.generateFilterTags()}
@@ -53,7 +53,7 @@ class ProjectList extends Component {
         for (let i = 0; i < TAG_TYPES.length && i < tags.length; i++) {
             tagsElementArray.push(
                 <span className={TAG_TYPES[i]} onClick={() => this.props.removeFilterTag(tags[i])} key={i}>
-                    <span className="fa fa-close icon-margin"></span>
+                    <span className="fa fa-close icon-margin"/>
                     {tags[i]}
                 </span>
             )
@@ -73,7 +73,7 @@ class ProjectList extends Component {
                         <div className="card-header">{project.name}</div>
                         <img className="card-img-top" src={project.image_url} alt="Card cap"/>
                         <div className="card-body">
-                            <p className="card-text text-secondary">{project.text_description}</p>
+                            <p className="card-text text-secondary">{project.short_description}</p>
                             <div className="row justify-content-end">
                                 <button className="btn btn-primary"
                                         onClick={() => this.props.navigateToProject(project)}>

@@ -2,7 +2,8 @@ const MOCK_RESPONSES = [
     {
         name: "Fun",
         id: 1,
-        text_description: "Fun game, fun time",
+        short_description: "Fun game, fun time",
+        long_description: "",
         about_us: "Indie devs, no HQ.",
         video_url: "",
         image_url: "http://via.placeholder.com/350x150",
@@ -12,7 +13,8 @@ const MOCK_RESPONSES = [
     {
         name: "Tallest Skyscraper",
         id: 2,
-        text_description: "Building a huge skyscraper",
+        short_description: "Building a huge skyscraper",
+        long_description: "",
         about_us: "Montreal based construction team. 3rd year students.",
         video_url: "vidurl",
         image_url: "http://via.placeholder.com/350x150",
@@ -22,7 +24,8 @@ const MOCK_RESPONSES = [
     {
         name: "Yet Another Marketplace",
         id: 3,
-        text_description: "proyect description. this may be really long",
+        short_description: "proyect description. this may be really long",
+        long_description: "",
         about_us: "We are a fun, worldwide team!",
         video_url: "vidurl",
         image_url: "http://via.placeholder.com/350x150",
