@@ -12,6 +12,14 @@ class ProjectListContainer extends Component {
         Api.getProjects().then(fetchedProjects => this.setState({projects: fetchedProjects}));
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.filterTags.join('') === this.state.filterTags.join('')) {
+            return;
+        }
+        Api.getProjectsByTags(this.state.filterTags)
+           .then(fetchedProjects => this.setState({projects: fetchedProjects}));
+    }
+
     render() {
         return React.createElement(ProjectList,
                                    {

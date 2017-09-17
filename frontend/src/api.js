@@ -36,6 +36,10 @@ class Api {
         return Promise.resolve(MOCK_RESPONSES);
     }
 
+    static getProjectsByTags(tags) {
+        return Promise.resolve(MOCK_RESPONSES);
+    }
+
     static getProject(id) {
         return Promise.resolve(MOCK_RESPONSES[2]);
     }
