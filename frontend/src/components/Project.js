@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Project.css';
+import './Contact.css';
 
 class Project extends Component
  {
@@ -19,19 +20,18 @@ class Project extends Component
 
     createProjectView() {
             return (
-                <div className="row justify-content-center" key={project.id}>
+                <div className="row justify-content-center" key={this.props.project.id}>
                     <div className="card project-holder col-12 col-md-8 col-lg-6">
-                        <img className="card-img-top" src={project.image_url} alt="Card cap"/>
+                        <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>
                         <div className="card-body">
-                            <h4 className="card-title">{project.name}</h4>
-                            <p className="card-text text-secondary">{project.text_description}</p>
+                            <h4 className="card-title">{this.props.project.name}</h4>
+                            <p className="card-text text-secondary">{this.props.project.text_description}</p>
                         </div>
                     </div>
                 </div>
             );
         };
     }
-
 
 
 export default Project;
