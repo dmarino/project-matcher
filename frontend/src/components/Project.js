@@ -22,8 +22,7 @@ class Project extends Component
                 <div className="row justify-content-center" key={this.props.project.id}>
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
                     <div className="card-header text-center"> <strong>{this.props.project.name}</strong></div>
-                   
-                    <img className="card-img-top" src={this.VerifyMedia()} alt="Card cap"/>
+                    {this.VerifyMedia()}
                     <div className="card-body">
                         <p className="card-text text-secondary">{this.props.project.long_description}</p>
                         <div className="card-subheader text-center"> <strong>About Us</strong></div>
@@ -74,10 +73,10 @@ class Project extends Component
         {
             if (this.props.project.video_url !='') 
             {
-                return this.props.project.video_url;
+                return <video  src={this.props.project.video_url} controls="controls"  autoplay="true" muted="muted" />
             }
             else
-                return this.props.project.image_url;
+                return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
         }
 
     }
