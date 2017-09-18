@@ -25,26 +25,7 @@ class Project extends Component {
                         <label>{this.props.project.about_us}</label>
                     </div>
                     <div className="card-footer">
-<<<<<<< HEAD
-                    <div className="card-subheader text-center"> <strong>Contact Form</strong></div>
-                    <br/>
-                    <div className="card-subbody">
-                        <form class='form' action='/' name='contactus' id='contactus' method='post'>
-                        <div className="form-group">
-                        <div className="input-group">
-                                <input className="form-control col"
-                                        type ='hidden'
-                                        value = {this.props.project.contact_email}
-                                        name='contact'
-                                />
-                            </div>
-                            <div className="input-group">
-                                <input className="form-control col"
-                                       type="text"
-                                       placeholder="Your Name"
-                                />
-                                <span className="input-group-addon">
-=======
+
                         <div className="card-subheader text-center"><strong>Contact Form</strong></div>
                         <br/>
                         <div className="card-subbody">
@@ -57,7 +38,7 @@ class Project extends Component {
                                                placeholder="Your Name"
                                         />
                                         <span className="input-group-addon">
->>>>>>> 9afad69cd83505ba763e9d1628e7b532d07b6cb8
+
                                     <i className="fa fa-id-card form-control-feedback"/>
                                 </span>
                                     </div>
@@ -96,10 +77,6 @@ class Project extends Component {
         else {
             return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
         }
-<<<<<<< HEAD
-      
-=======
->>>>>>> 9afad69cd83505ba763e9d1628e7b532d07b6cb8
     }
 }
 
