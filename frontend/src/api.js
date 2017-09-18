@@ -1,4 +1,4 @@
-const URL = 'http://localhost:8000';
+const URL = 'https://project-matcher.herokuapp.com';
 const IMG_ENDPOINT = '/files/img';
 const VID_ENDPOINT = '/files/vid';
 const PROJECT_ENDPOINT = '/projects';
