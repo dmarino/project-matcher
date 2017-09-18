@@ -55,7 +55,7 @@ class Project extends Component {
                             <div className="form-group">
                                 <div className="input-group">
                                     <input className="form-control col"
-                                           type="text"
+                                           type="email"
                                            placeholder="Your Email"
                                            name="email"
                                            onChange={(e) => InputUtils.getTextValueAndExecute(e,
