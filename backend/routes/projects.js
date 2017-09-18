@@ -2,20 +2,25 @@ const express = require('express');
 const router = express.Router();
 const ProjectModel = require('../models/project_model');
 
-/* GET projects listing. */
-router.get('/', function(req, res, next) {
-    res.send('query mongo and return');
+router.get('/', function (req, res, next) {
+    const tags = req.query.tags;
+    const query = tags ? {tags: {$all: tags}} : {};
+    ProjectModel.find(query, (err, projects) => {
+        if (err) {
+            throw err;
+        }
+        res.json(projects);
+    });
 });
 
-/* GET specific project listing. */
-router.get('/:id', function(req, res, next) {
-    res.send('query mongo with id and return');
-});
-
-/* POST project */
-router.post('/', function(req, res, next) {
+router.post('/', function (req, res, next) {
     console.log(req.body);
-    res.send('added new entry to db');
+    ProjectModel.create(req.body, (err, project) => {
+        if (err) {
+            throw err;
+        }
+        res.status(200).json(project);
+    });
 });
 
 module.exports = router;
