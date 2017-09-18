@@ -22,19 +22,21 @@ class Tags extends Component {
         for (let i = 0; i < TAG_COLOR_TYPES.length && i < tags.length; i++) {
             tagsElementArray.push(this.getTagOfType(tags[i], i));
         }
-        return tagsElementArray;
+        return (
+            <span className="text-muted">
+                        {this.props.message}
+                {tagsElementArray}
+            </span>
+        );
     }
 
     getTagOfType(tagName, key) {
         switch (this.props.type) {
             case 'removable':
                 return (
-                    <span className="text-muted" key={key}>
-                        {this.props.message}
-                        <span className={TAG_COLOR_TYPES[key]} onClick={() => this.props.removeTag(tagName)}>
+                    <span className={TAG_COLOR_TYPES[key]} onClick={() => this.props.removeTag(tagName)} key={key}>
                             <span className="fa fa-close icon-margin"/>
-                            {tagName}
-                        </span>
+                        {tagName}
                     </span>
                 );
             case 'regular':

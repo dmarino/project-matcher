@@ -19,7 +19,6 @@ class ProjectListContainer extends Component {
         Api.getProjectsByTags(this.state.filterTags)
            .then(fetchedProjects => {
                this.setState({projects: fetchedProjects});
-               console.log(fetchedProjects);
            });
     }
 
