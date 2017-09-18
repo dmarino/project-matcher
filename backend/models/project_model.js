@@ -7,8 +7,8 @@ const ProjectSchema = new Schema({
     short_description: String,
     long_description: String,
     about_us: String,
-    video: String,
-    image: String,
+    video_url: String,
+    image_url: String,
     contact_email: String,
     tags: [String]
 });
