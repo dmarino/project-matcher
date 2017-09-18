@@ -10,7 +10,7 @@ class ProjectUpload extends Component {
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
                     <div className="card-header">Start letting people know about your project!</div>
                     <div className="card-body">
-                        <form>
+                        <form encType="multipart/form-data">
                             <div className="form-group">
                                 <div className="input-group">
                                     <input className="form-control col"
@@ -18,7 +18,7 @@ class ProjectUpload extends Component {
                                            placeholder="Project name"
                                            value={this.props.name}
                                            onChange={(e) => InputUtils.getTextValueAndExecute(e,
-                                                                                              this.props.onNameKeyPress)}
+                                               this.props.onNameKeyPress)}
                                            maxLength="30"
                                            required/>
                                     <span className="input-group-addon">
@@ -34,7 +34,7 @@ class ProjectUpload extends Component {
                                            value={this.props.short_description}
                                            onChange={
                                                (e) => InputUtils.getTextValueAndExecute(e,
-                                                                                        this.props.onShortDescriptionKeyPress)
+                                                   this.props.onShortDescriptionKeyPress)
                                            }
                                            maxLength="100"
                                            required/>
@@ -51,7 +51,7 @@ class ProjectUpload extends Component {
                                            value={this.props.contact_email}
                                            onChange={
                                                (e) => InputUtils.getTextValueAndExecute(e,
-                                                                                        this.props.onUpdateContactEmail)
+                                                   this.props.onUpdateContactEmail)
                                            }
                                            maxLength="50"
                                            required/>
@@ -85,7 +85,7 @@ class ProjectUpload extends Component {
                                           rows="3"
                                           onChange={
                                               (e) => InputUtils.getTextValueAndExecute(e,
-                                                                                       this.props.onLongDescriptionKeyPress)
+                                                  this.props.onLongDescriptionKeyPress)
                                           }
                                           required/>
                             </div>
@@ -103,24 +103,41 @@ class ProjectUpload extends Component {
                             <div className="form-group">
                                 <label htmlFor="projectImageFileInput">Project image</label>
                                 <input type="file" className="form-control-file" id="projectImageFileInput"
-                                       aria-describedby="fileHelp" accept="image/png, image/jpeg"
-                                       value={this.props.image_url}
-                                       onChange={(e) => InputUtils.getTextValueAndExecute(e,
-                                                                                          this.props.onUpdateImageUrl)}
+                                       aria-describedby="fileHelp" accept="image/png"
+                                       onChange={(e) => InputUtils.getFilesAndExecute(e,
+                                           this.props.onUpdateImageUrl)}
                                        required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="projectDemoFileInput">Demo video</label>
                                 <input type="file" className="form-control-file" id="projectDemoFileInput"
                                        aria-describedby="fileHelp" accept="video/mp4"
-                                       value={this.props.video_url}
-                                       onChange={(e) => InputUtils.getTextValueAndExecute(e,
-                                                                                          this.props.onUpdateVideoUrl)}/>
+                                       onChange={(e) => InputUtils.getFilesAndExecute(e,
+                                           this.props.onUpdateVideoUrl)}/>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div className="row justify-content-end">
+                                <button type="button" className="btn btn-primary" onClick={this.props.saveProject}>
+                                    Submit
+                                </button>
+                            </div>
+                            {this.generateSavingMessage()}
                         </form>
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    generateSavingMessage() {
+        if (!this.props.saving) {
+            return;
+        }
+        return (
+            <div className="row justify-content-center">
+                    <span className="text-warning">
+                        <span className="fa fa-circle-o-notch fa-spin icon-gap"/>
+                        Saving project
+                    </span>
             </div>
         )
     }

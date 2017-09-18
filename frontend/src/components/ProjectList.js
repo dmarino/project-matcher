@@ -27,7 +27,8 @@ class ProjectList extends Component {
                         </span>
                     </div>
                     <span>
-                        <Tags tags={this.props.filterTags} removeTag={this.props.removeFilterTag} type="removable" message="Filtering results by:"/>
+                        <Tags tags={this.props.filterTags} removeTag={this.props.removeFilterTag} type="removable"
+                              message="Filtering results by:"/>
                     </span>
                 </div>
             </div>
@@ -35,9 +36,16 @@ class ProjectList extends Component {
     }
 
     generateProjectList() {
+        if (this.props.projects.length === 0) {
+            return (
+                <div className="row justify-content-center">
+                    <p className="card-text text-secondary">No projects were found!</p>
+                </div>
+            )
+        }
         return this.props.projects.map(project => {
             return (
-                <div className="row justify-content-center" key={project.id}>
+                <div className="row justify-content-center" key={project._id}>
                     <div className="card project-holder col-12 col-md-8 col-lg-6">
                         <div className="card-header">{project.name}</div>
                         <img className="card-img-top" src={project.image_url} alt="Card cap"/>

@@ -17,18 +17,21 @@ class ProjectListContainer extends Component {
             return;
         }
         Api.getProjectsByTags(this.state.filterTags)
-           .then(fetchedProjects => this.setState({projects: fetchedProjects}));
+           .then(fetchedProjects => {
+               this.setState({projects: fetchedProjects});
+               console.log(fetchedProjects);
+           });
     }
 
     render() {
         return React.createElement(ProjectList,
-                                   {
-                                       projects: this.state.projects,
-                                       filterTags: this.state.filterTags,
-                                       navigateToProject: this.props.navigateToProject,
-                                       removeFilterTag: (e) => this.removeFilterTag(e),
-                                       addFilterTag: (e) => this.addFilterTag(e)
-                                   });
+            {
+                projects: this.state.projects,
+                filterTags: this.state.filterTags,
+                navigateToProject: this.props.navigateToProject,
+                removeFilterTag: (e) => this.removeFilterTag(e),
+                addFilterTag: (e) => this.addFilterTag(e)
+            });
     }
 
     addFilterTag(tagName) {

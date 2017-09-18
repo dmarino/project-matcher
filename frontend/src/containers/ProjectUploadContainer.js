@@ -2,19 +2,11 @@ import React, {Component} from 'react';
 import ProjectUpload from '../components/ProjectUpload';
 import Api from '../api';
 
+
 class ProjectUploadContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            name: "",
-            short_description: "",
-            long_description: "",
-            about_us: "",
-            video_url: "",
-            image_url: "",
-            contact_email: "",
-            tags: []
-        };
+        this.state = this.originalState();
     }
 
     updateName(name) {
@@ -33,12 +25,13 @@ class ProjectUploadContainer extends Component {
         this.setState({about_us: aboutUs});
     }
 
-    updateVideoUrl(videoUrl) {
-        this.setState({video_url: videoUrl});
+    updateVideoUrl(videos) {
+        this.setState({video: ''});
     }
 
-    updateImageUrl(imageUrl) {
-        this.setState({image_url: imageUrl});
+    updateImageUrl(images) {
+        const image = images[0];
+        this.setState({image: image});
     }
 
     updateContactEmail(contactEmail) {
@@ -55,19 +48,48 @@ class ProjectUploadContainer extends Component {
         this.setState({tags: updatedTags});
     }
 
-    saveProject(project) {
-        Api.saveProject(project);
+    saveProject() {
+        this.setState({saving: true});
+        const imageUrlPromise = Api.saveImage(this.state.image);
+        const videoUrlPromise = Api.saveVideo(this.state.video);
+
+        Promise.all([imageUrlPromise, videoUrlPromise]).then((responseArray) => {
+            Api.saveProject({
+                name: this.state.name,
+                short_description: this.state.short_description,
+                long_description: this.state.long_description,
+                about_us: this.state.about_us,
+                image_url: responseArray[0],
+                video_url: responseArray[1],
+                contact_email: this.state.contact_email,
+                tags: this.state.tags,
+            }).then(response => this.setState(this.originalState()));
+        });
+    }
+
+    originalState() {
+        return {
+            saving: false,
+            name: "",
+            short_description: "",
+            long_description: "",
+            about_us: "",
+            video: "",
+            image: "",
+            contact_email: "",
+            tags: []
+        };
     }
 
     render() {
         return React.createElement(ProjectUpload, {
-            saveProject: this.saveProject,
+            saving: this.state.saving,
             name: this.state.name,
             short_description: this.state.short_description,
             long_description: this.state.long_description,
             about_us: this.state.about_us,
-            video_url: this.state.video_url,
-            image_url: this.state.image_url,
+            video: this.state.video,
+            image: this.state.image,
             contact_email: this.state.contact_email,
             tags: this.state.tags,
             onNameKeyPress: (name) => this.updateName(name),
@@ -78,7 +100,8 @@ class ProjectUploadContainer extends Component {
             onUpdateImageUrl: (imageUrl) => this.updateImageUrl(imageUrl),
             onUpdateContactEmail: (contactEmail) => this.updateContactEmail(contactEmail),
             onTagAdded: (tag) => this.addTag(tag),
-            onTagRemoved: (tag) => this.removeTag(tag)
+            onTagRemoved: (tag) => this.removeTag(tag),
+            saveProject: () => this.saveProject()
         });
     }
 }

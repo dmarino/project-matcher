@@ -2,30 +2,30 @@ import React, {Component} from 'react';
 import './Project.css';
 
 
-class Project extends Component
- {
+class Project extends Component {
     render() {
         return (
             <div>
-             <div className="container">
-                {this.createProjectView()}
+                <div className="container">
+                    {this.createProjectView()}
+                </div>
             </div>
-        </div>
         )
     }
-    
+
     createProjectView() {
-            return (
-                <div className="row justify-content-center" key={this.props.project.id}>
+        return (
+            <div className="row justify-content-center" key={this.props.project.id}>
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
-                    <div className="card-header text-center"> <strong>{this.props.project.name}</strong></div>
+                    <div className="card-header text-center"><strong>{this.props.project.name}</strong></div>
                     {this.VerifyMedia()}
                     <div className="card-body">
                         <p className="card-text text-secondary">{this.props.project.long_description}</p>
-                        <div className="card-subheader text-center"> <strong>About Us</strong></div>
+                        <div className="card-subheader text-center"><strong>About Us</strong></div>
                         <label>{this.props.project.about_us}</label>
                     </div>
                     <div className="card-footer">
+<<<<<<< HEAD
                     <div className="card-subheader text-center"> <strong>Contact Form</strong></div>
                     <br/>
                     <div className="card-subbody">
@@ -44,45 +44,63 @@ class Project extends Component
                                        placeholder="Your Name"
                                 />
                                 <span className="input-group-addon">
+=======
+                        <div className="card-subheader text-center"><strong>Contact Form</strong></div>
+                        <br/>
+                        <div className="card-subbody">
+                            <form action='/contact' name='contactus' id='contactus' method='post'
+                                  onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <div className="input-group">
+                                        <input className="form-control col"
+                                               type="text"
+                                               placeholder="Your Name"
+                                        />
+                                        <span className="input-group-addon">
+>>>>>>> 9afad69cd83505ba763e9d1628e7b532d07b6cb8
                                     <i className="fa fa-id-card form-control-feedback"/>
                                 </span>
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <div className="input-group">
-                                <input className="form-control col"
-                                       type="text"
-                                       placeholder="Your Email"
-                                />
-                                <span className="input-group-addon">
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="input-group">
+                                        <input className="form-control col"
+                                               type="text"
+                                               placeholder="Your Email"
+                                        />
+                                        <span className="input-group-addon">
                                     <i className="fa fa-envelope form-control-feedback"/>
                                 </span>
-                            </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <textarea className="form-control" placeholder="Your Message" name="comment"
+                                              rows="3" type="text"/>
+                                </div>
+                                <div className="form-group text-center">
+                                    <input className="btn btn-primary btn-lg" type="submit" value="Send Message"/>
+                                </div>
+                            </form>
                         </div>
-                            <div className="form-group">
-                                <textarea className="form-control" placeholder="Your Message" name="comment" rows="3" type="text" ></textarea>
-                            </div>
-                            <div className="form-group text-center">
-                                <input className="btn btn-primary btn-lg" type="submit" value="Send Message"/>
-                            </div>
-                        </form>   
-                        </div>   
                     </div>
                 </div>
             </div>
-            );
-        };
+        );
+    };
 
-        VerifyMedia()
-        {
-            if (this.props.project.video_url !=='') 
-            {
-                return <video controls src={this.props.project.video_url} autoPlay="true" muted="muted" height="250"  width="450" />
-            }
-            else
-                return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
+    VerifyMedia() {
+        if (this.props.project.video_url !== '') {
+            return <video controls src={this.props.project.video_url} autoPlay="true" muted="muted" height="250"
+                          width="450"/>
         }
+        else {
+            return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
+        }
+<<<<<<< HEAD
       
+=======
+>>>>>>> 9afad69cd83505ba763e9d1628e7b532d07b6cb8
     }
+}
 
 export default Project;

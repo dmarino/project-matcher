@@ -13,6 +13,12 @@ class InputUtils {
         const textValue = e.currentTarget.value;
         callback(textValue);
     }
+
+    static getFilesAndExecute(e, callback) {
+        const files = e.currentTarget.files;
+        callback(files);
+    }
+
 }
 
 export default InputUtils;
