@@ -9,6 +9,7 @@ const busboyBodyParser = require('busboy-body-parser');
 const index = require('./routes/index');
 const projects = require('./routes/projects');
 const files = require('./routes/files');
+const contact = require('./routes/contact');
 const app = express();
 
 // view engine setup
@@ -33,6 +34,7 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/projects', projects);
 app.use('/files', files);
+app.use('/contact', contact);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
