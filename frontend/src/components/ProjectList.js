@@ -37,7 +37,7 @@ class ProjectList extends Component {
     generateProjectList() {
         return this.props.projects.map(project => {
             return (
-                <div className="row justify-content-center" key={project.id}>
+                <div className="row justify-content-center" key={project._id}>
                     <div className="card project-holder col-12 col-md-8 col-lg-6">
                         <div className="card-header">{project.name}</div>
                         <img className="card-img-top" src={project.image_url} alt="Card cap"/>
