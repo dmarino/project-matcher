@@ -29,8 +29,15 @@ class Project extends Component
                     <div className="card-subheader text-center"> <strong>Contact Form</strong></div>
                     <br/>
                     <div className="card-subbody">
-                        <form action='/contact' name='contactus' id='contactus' method='post' onSubmit={this.handleSubmit}>
+                        <form class='form' action='/' name='contactus' id='contactus' method='post'>
                         <div className="form-group">
+                        <div className="input-group">
+                                <input className="form-control col"
+                                        type ='hidden'
+                                        value = {this.props.project.contact_email}
+                                        name='contact'
+                                />
+                            </div>
                             <div className="input-group">
                                 <input className="form-control col"
                                        type="text"
@@ -75,7 +82,7 @@ class Project extends Component
             else
                 return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;
         }
-
+      
     }
 
 export default Project;
