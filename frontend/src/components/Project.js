@@ -25,6 +25,7 @@ class Project extends Component {
                         <label>{this.props.project.about_us}</label>
                     </div>
                     <div className="card-footer">
+
                         <div className="card-subheader text-center"><strong>Contact Form</strong></div>
                         <br/>
                         <div className="card-subbody">
@@ -37,6 +38,7 @@ class Project extends Component {
                                                placeholder="Your Name"
                                         />
                                         <span className="input-group-addon">
+
                                     <i className="fa fa-id-card form-control-feedback"/>
                                 </span>
                                     </div>
