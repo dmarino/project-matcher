@@ -10,7 +10,7 @@ class ProjectUpload extends Component {
                 <div className="card project-holder col-12 col-md-8 col-lg-6">
                     <div className="card-header">Start letting people know about your project!</div>
                     <div className="card-body">
-                        <form encType="multipart/form-data">
+                        <form encType="multipart/form-data" ref={(input) => this.form = input} noValidate>
                             <div className="form-group">
                                 <div className="input-group">
                                     <input className="form-control col"
@@ -22,8 +22,8 @@ class ProjectUpload extends Component {
                                            maxLength="30"
                                            required/>
                                     <span className="input-group-addon">
-                                    <i className="fa fa-id-card form-control-feedback"/>
-                                </span>
+                                        <i className="fa fa-id-card form-control-feedback"/>
+                                    </span>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -69,8 +69,8 @@ class ProjectUpload extends Component {
                                                (e) => InputUtils.onEnterPress(e, (val) => this.props.onTagAdded(val))
                                            }/>
                                     <span className="input-group-addon">
-                                    <i className="fa fa-tags form-control-feedback"/>
-                                </span>
+                                        <i className="fa fa-tags form-control-feedback"/>
+                                    </span>
                                 </div>
                                 <div className="text-center">
                                     <Tags tags={this.props.tags} removeTag={this.props.onTagRemoved} type="removable"
@@ -104,6 +104,7 @@ class ProjectUpload extends Component {
                                 <label htmlFor="projectImageFileInput">Project image</label>
                                 <input type="file" className="form-control-file" id="projectImageFileInput"
                                        aria-describedby="fileHelp" accept="image/png"
+                                       ref={(input) => this.imageInput = input}
                                        onChange={(e) => InputUtils.getFilesAndExecute(e,
                                            this.props.onUpdateImageUrl)}
                                        required/>
@@ -112,11 +113,12 @@ class ProjectUpload extends Component {
                                 <label htmlFor="projectDemoFileInput">Demo video</label>
                                 <input type="file" className="form-control-file" id="projectDemoFileInput"
                                        aria-describedby="fileHelp" accept="video/mp4"
+                                       ref={(input) => this.videoInput = input}
                                        onChange={(e) => InputUtils.getFilesAndExecute(e,
                                            this.props.onUpdateVideoUrl)}/>
                             </div>
                             <div className="row justify-content-end">
-                                <button type="button" className="btn btn-primary" onClick={this.props.saveProject}>
+                                <button type="button" className="btn btn-primary" onClick={() => this.checkForm()}>
                                     Submit
                                 </button>
                             </div>
@@ -126,6 +128,17 @@ class ProjectUpload extends Component {
                 </div>
             </div>
         )
+    }
+
+    checkForm() {
+        const valid = this.form.checkValidity();
+        if (valid) {
+            this.props.saveProject();
+            this.videoInput.value = '';
+            this.imageInput.value = '';
+        } else {
+            this.form.classList.add("was-validated");
+        }
     }
 
     generateSavingMessage() {
