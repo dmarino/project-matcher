@@ -36,6 +36,7 @@ function findFile(req, res, type) {
                 message: 'File not found'
             });
         }
+
         console.log(files);
         let data = [];
         let readStream = gfs.createReadStream({
@@ -48,7 +49,11 @@ function findFile(req, res, type) {
 
         readStream.on('end', () => {
             data = Buffer.concat(data);
-            let file = type + ',' + Buffer(data).toString('base64');
+            res.writeHead(200, {
+                'Content-Type': type,
+                'Content-Length': data.length
+            });
+            let file = Buffer.from(data, 'base64');
             res.end(file);
         });
 
@@ -71,7 +76,7 @@ conn.once('open', () => {
     });
 
     router.get('/img/:name', (req, res) => {
-        findFile(req, res, 'data:image/png;base64');
+        findFile(req, res, 'image/png');
     });
 
     router.post('/vid', (req, res) => {
@@ -79,7 +84,7 @@ conn.once('open', () => {
     });
 
     router.get('/vid/:name', (req, res) => {
-        findFile(req, res, 'data:video/mp4;base64');
+        findFile(req, res, 'video/mp4');
     });
 });
 

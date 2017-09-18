@@ -39,7 +39,7 @@ class Api {
         data.append('file', formData);
         return fetch(path, {method: 'POST', body: data})
             .then(res => res.json())
-            .then(res => res.file.filename);
+            .then(res => path + '/' + res.file.filename);
     }
 
     static saveProject(project) {
