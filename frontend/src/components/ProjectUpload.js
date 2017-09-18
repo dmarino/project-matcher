@@ -103,7 +103,7 @@ class ProjectUpload extends Component {
                             <div className="form-group">
                                 <label htmlFor="projectImageFileInput">Project image</label>
                                 <input type="file" className="form-control-file" id="projectImageFileInput"
-                                       aria-describedby="fileHelp" accept="image/png, image/jpeg"
+                                       aria-describedby="fileHelp" accept="image/png"
                                        onChange={(e) => InputUtils.getFilesAndExecute(e,
                                            this.props.onUpdateImageUrl)}
                                        required/>
@@ -135,7 +135,7 @@ class ProjectUpload extends Component {
         return (
             <div className="row justify-content-center">
                     <span className="text-warning">
-                        <span className="fa fa-circle-o-notch fa-spin icon-gap"></span>
+                        <span className="fa fa-circle-o-notch fa-spin icon-gap"/>
                         Saving project
                     </span>
             </div>
