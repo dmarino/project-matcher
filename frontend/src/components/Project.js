@@ -31,12 +31,21 @@ class Project extends Component {
                         <div className="card-subbody">
                             <form action='/contact' name='contactus' id='contactus' method='post'
                                   onSubmit={this.handleSubmit}>
+                                  <div className="form-group">
+                                    <div className="input-group">
+                                        <input className="form-control col"
+                                               type="hidden"
+                                               name ={this.props.project.contact_email} 
+                                        required/>
+                                    </div>
+                                </div>
                                 <div className="form-group">
                                     <div className="input-group">
                                         <input className="form-control col"
                                                type="text"
                                                placeholder="Your Name"
-                                        />
+                                               name ="name"
+                                        required/>
                                         <span className="input-group-addon">
 
                                     <i className="fa fa-id-card form-control-feedback"/>
@@ -48,7 +57,8 @@ class Project extends Component {
                                         <input className="form-control col"
                                                type="text"
                                                placeholder="Your Email"
-                                        />
+                                               name="email"
+                                        required/>
                                         <span className="input-group-addon">
                                     <i className="fa fa-envelope form-control-feedback"/>
                                 </span>

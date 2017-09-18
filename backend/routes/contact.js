@@ -15,7 +15,7 @@ router.post('/', function(req, res)
 
 var mailOptions = {
   from: 'projectsharingmanager@gmail.com>', // sender address
-  to: 'juan_arciniegas13@hotmail.com',
+  to: req.body.contac_email,
   subject: 'Interesado en el Proyecto', // Subject line
   text: 'My name is:' +req.body.name +"I want to talk about "+req.body.comment + "pelase contact me at"+ req.body.email
 };
