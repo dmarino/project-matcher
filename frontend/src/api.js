@@ -2,6 +2,7 @@ const URL = 'http://localhost:8000';
 const IMG_ENDPOINT = '/files/img';
 const VID_ENDPOINT = '/files/vid';
 const PROJECT_ENDPOINT = '/projects';
+const CONTACT_ENDPOINT = '/contact';
 
 class Api {
     static getProjects() {
@@ -50,6 +51,17 @@ class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(project)
+        }).then(res => res.json());
+    }
+
+    static sendMail(name, toEmail, fromEmail, message) {
+        return fetch(URL + CONTACT_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: name, toEmail: toEmail, fromEmail: fromEmail, message: message})
         }).then(res => res.json());
     }
 }
