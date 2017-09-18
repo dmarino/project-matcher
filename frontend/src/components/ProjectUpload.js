@@ -133,9 +133,10 @@ class ProjectUpload extends Component {
     checkForm() {
         const valid = this.form.checkValidity();
         if (valid) {
-            this.props.saveProject();
-            this.videoInput.value = '';
-            this.imageInput.value = '';
+            this.props.saveProject().then(() => {
+                this.videoInput.value = '';
+                this.imageInput.value = '';
+            });
         } else {
             this.form.classList.add("was-validated");
         }

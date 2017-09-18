@@ -86,8 +86,7 @@ class Project extends Component {
 
     verifyMedia() {
         if (this.props.project.video_url !== '') {
-            return <video controls src={this.props.project.video_url} autoPlay="true" muted="muted" height="250"
-                          width="450"/>
+            return <video controls src={this.props.project.video_url} autoPlay="true" muted="muted"/>
         }
         else {
             return <img className="card-img-top" src={this.props.project.image_url} alt="Card cap"/>;

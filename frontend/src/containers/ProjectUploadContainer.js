@@ -26,7 +26,8 @@ class ProjectUploadContainer extends Component {
     }
 
     updateVideoUrl(videos) {
-        this.setState({video: ''});
+        const video = videos[0];
+        this.setState({video: video});
     }
 
     updateImageUrl(images) {
@@ -53,8 +54,8 @@ class ProjectUploadContainer extends Component {
         const imageUrlPromise = Api.saveImage(this.state.image);
         const videoUrlPromise = Api.saveVideo(this.state.video);
 
-        Promise.all([imageUrlPromise, videoUrlPromise]).then((responseArray) => {
-            Api.saveProject({
+        return Promise.all([imageUrlPromise, videoUrlPromise]).then((responseArray) => {
+            return Api.saveProject({
                 name: this.state.name,
                 short_description: this.state.short_description,
                 long_description: this.state.long_description,
