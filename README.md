@@ -17,8 +17,6 @@ Node.Js
 Git
 ```
 ```
-Local Variable :MONGODB_URI
-Variable Value -> mongodb://heroku_hcq5ndvg:f879cr15c4l8gunnssmaaamgsk@ds163940.mlab.com:63940/heroku_hcq5ndvg
 ```
 
 ## Deployment
