@@ -43,12 +43,34 @@ class Api {
         return Promise.resolve(MOCK_RESPONSES);
     }
 
-    static getProject(id) {
-        return Promise.resolve(MOCK_RESPONSES[2]);
+    static saveImage(data) {
+        return this.saveFile(data, 'http://localhost:8000/files/img');
     }
 
-    static saveProject() {
-        return Promise.resolve(true);
+    static saveVideo(data) {
+        return this.saveFile(data, 'http://localhost:8000/files/vid');
+    }
+
+    static saveFile(formData, path) {
+        if (!formData) {
+            return Promise.resolve('');
+        }
+        const data = new FormData();
+        data.append('file', formData);
+        return fetch(path, {method: 'POST', body: data})
+            .then(res => res.json())
+            .then(res => res.file.filename);
+    }
+
+    static saveProject(project) {
+        return fetch('http://localhost:8000/projects', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(project)
+        }).then(res => res.json());
     }
 }
 
