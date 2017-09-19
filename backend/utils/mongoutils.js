@@ -1,3 +1,5 @@
+//Creo que no se podía usar mongoose, igual bien que la url de mongo sea una variable de entorno.
+
 const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI;
 
